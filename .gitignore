@@ -1,0 +1,13 @@
+# Ignore node modules
+node_modules/
+
+# Ignore environment files
+.env
+
+# Optional: Ignore logs, OS junk, and temp files
+*.log
+.DS_Store
+*.tmp
+
+# Ignore Yarn Plug'n'Play lock file
+pnpm-lock.yaml
