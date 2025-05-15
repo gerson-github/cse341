@@ -1,7 +1,8 @@
 require("dotenv").config();
 const express = require("express");
+const contactsRouter = require("../cse341/routes/contacts");
 const mongoose = require("mongoose");
-const Sample = require("./models/sample");
+//const Sample = require("./models/sample");
 
 const app = express();
 app.use(express.json());
@@ -18,25 +19,36 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Sample route
+/*****************************
+ routes
+ **********************/
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.post("/sample", async (req, res) => {
-  try {
-    const data = new Sample(req.body);
-    const saved = await data.save();
-    res.status(201).json(saved);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+app.use('/contacts', contactsRouter);
 
-app.get("/sample", async (req, res) => {
-  const data = await Sample.find();
-  res.json(data);
-});
+
+
+// Sample route
+// app.get("/", (req, res) => {
+//   res.send("API is running...");
+// });
+
+// app.post("/sample", async (req, res) => {
+//   try {
+//     const data = new Sample(req.body);
+//     const saved = await data.save();
+//     res.status(201).json(saved);
+//   } catch (err) {
+//     res.status(400).json({ error: err.message });
+//   }
+// });
+
+// app.get("/sample", async (req, res) => {
+//   const data = await Sample.find();
+//   res.json(data);
+// });
 
 // Start server
 app.listen(PORT, () => {
