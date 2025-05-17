@@ -29,28 +29,6 @@ app.get("/", (req, res) => {
 
 app.use('/contacts', contactsRouter);
 
-
-
-// Sample route
-// app.get("/", (req, res) => {
-//   res.send("API is running...");
-// });
-
-// app.post("/sample", async (req, res) => {
-//   try {
-//     const data = new Sample(req.body);
-//     const saved = await data.save();
-//     res.status(201).json(saved);
-//   } catch (err) {
-//     res.status(400).json({ error: err.message });
-//   }
-// });
-
-// app.get("/sample", async (req, res) => {
-//   const data = await Sample.find();
-//   res.json(data);
-// });
-
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

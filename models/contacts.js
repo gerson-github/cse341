@@ -12,11 +12,7 @@ const saleSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  //name: String, // exemplo de campo
-  //value: Number, // exemplo de campo
-  // adicione outros campos que sua coleção 'sales' tenha
-  //date: { type: Date, default: Date.now }, // exemplo de um campo adicional
-  // outros campos conforme necessário...
+  
 });
 
 // Crie o modelo e vincule à coleção 'sales'
