@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
-const contactsRouter = require("./cse341/routes/contacts");
+//const contactsRouter = require("../cse341/routes/contacts");
+const contactsRouter = require("./routes/contacts");
 const mongoose = require("mongoose");
 //const Sample = require("./models/sample");
 
