@@ -1,12 +1,15 @@
 require("dotenv").config();
 const express = require("express");
-//const contactsRouter = require("../cse341/routes/contacts");
 const contactsRouter = require("./routes/contacts");
 const mongoose = require("mongoose");
-//const Sample = require("./models/sample");
+
 
 const app = express();
-app.use(express.json());
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
+
+
+
 
 const PORT = process.env.PORT || 3000;
 const DB = process.env.MONGODB_URI;
@@ -23,9 +26,15 @@ mongoose
 /*****************************
  routes
  **********************/
-app.get("/", (req, res) => {
+app
+  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+  .use(express.json());
+
+ app.get("/", (req, res) => {
   res.send("API is running...");
 });
+
+
 
 app.use('/contacts', contactsRouter);
 
