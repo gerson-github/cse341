@@ -34,10 +34,7 @@ exports.createContact = async (req, res) => {
 //Put
 exports.updateContact = async (req, res) => {
 
-console.log('---------------------------- UPDATE --------------------------------------------')
 
-console.log('PARAMS.ID:', req.params.id);
-  console.log('BODY:', req.body);
 
     try {
         const updContact =await Contacts.findOneAndUpdate(

@@ -14,10 +14,10 @@ const contactController = require("../controllers/contacts");
  * @swagger
  * /contacts:
  *   get:
- *     summary: Recupera contatos
+ *     summary: Read contacts
  *     description: >
- *       - Sem `?id`, retorna todos os contatos.
- *       - Com `?id={contactId}`, retorna um único contato (404 se não achar).
+ *       - Sem ID, return contact list.
+ *       - Com ID, return unique contact  (404 if not found).
  *     tags:
  *       - Contacts
  *     parameters:
@@ -26,21 +26,21 @@ const contactController = require("../controllers/contacts");
  *         schema:
  *           type: string
  *         required: false
- *         description: ID do contato a buscar
+ *         description: Contact Id for search
  *     responses:
  *       '200':
- *         description: Lista de contatos ou único contato
+ *         description: Contact List or a distinct contact 
  *       '404':
- *         description: Contato não encontrado
+ *         description: Contact not found
  *       '500':
- *         description: Erro interno do servidor
+ *         description: SErver Error
  */
 
 /**
  * @swagger
  * /contacts:
  *   post:
- *     summary: Cria um novo contato
+ *     summary: Add new Contact 
  *     tags: [Contacts]
  *     requestBody:
  *       required: true
@@ -60,14 +60,14 @@ const contactController = require("../controllers/contacts");
  *               - email
  *     responses:
  *       201:
- *         description: Contato criado com sucesso
+ *         description: Created successfuly
  */
 
 /**
  * @swagger
  * /contacts/{id}:
  *   put:
- *     summary: Atualiza um contato existente
+ *     summary: Update a contact 
  *     tags:
  *       - Contacts
  *     parameters:
@@ -76,7 +76,7 @@ const contactController = require("../controllers/contacts");
  *         schema:
  *           type: string
  *         required: true
- *         description: ID do contato a ser atualizado
+ *         description: Contact ID for update
  *     requestBody:
  *       required: true
  *       content:
@@ -86,25 +86,25 @@ const contactController = require("../controllers/contacts");
  *             properties:
  *               firstName:
  *                 type: string
- *                 description: Primeiro nome do contato
+ *                 description: First Name
  *               lastName:
  *                 type: string
- *                 description: Sobrenome do contato
+ *                 description: Last Name
  *               email:
  *                 type: string
  *                 format: email
- *                 description: E-mail do contato
+ *                 description: E-mail 
  *               favoriteColor:
  *                 type: string
- *                 description: Cor favorita
+ *                 description: Favorite Color
  *               birthday:
  *                 type: string
  *                 format: date
- *                 description: Data de nascimento (YYYY-MM-DD)
+ *                 description: BDT (YYYY-MM-DD)
  *               date:
  *                 type: string
  *                 format: date-time
- *                 description: Timestamp de criação
+ *                 description: Date created 
  *             required:
  *               - firstName
  *               - lastName
@@ -118,13 +118,13 @@ const contactController = require("../controllers/contacts");
  *               date: "2025-05-16T21:18:25.870Z"
  *     responses:
  *       '200':
- *         description: Contato atualizado com sucesso
+ *         description: Record updated
  *       '400':
- *         description: Requisição inválida
+ *         description: Request Invalid
  *       '404':
- *         description: Contato não encontrado
+ *         description: Record not found
  *       '500':
- *         description: Erro interno do servidor
+ *         description: Server Error
  */
 
 
@@ -132,7 +132,7 @@ const contactController = require("../controllers/contacts");
  * @swagger
  * /contacts/{id}:
  *   delete:
- *     summary: Remove um contato
+ *     summary: Delete a Contact
  *     tags: [Contacts]
  *     parameters:
  *       - in: path
@@ -140,15 +140,14 @@ const contactController = require("../controllers/contacts");
  *         required: true
  *         schema:
  *           type: string
- *         description: ID do contato
+ *         description: Contact ID for delete
  *     responses:
  *       200:
- *         description: Contato deletado com sucesso
+ *         description: Contact deleted
  *       404:
- *         description: Contato não encontrado
+ *         description: Record not found
  */
 
-console.log('----------------------------ROUTE !!!! ROUTE ROUTE ROUTE ROUTE ROUTE ROUTE ROUTE ROUTE--------------------------------------------')
 
 router.get("/", contactController.getContacts); //get - read
 router.post("/", contactController.createContact); //post - create
