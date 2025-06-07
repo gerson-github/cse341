@@ -10,4 +10,4 @@ const saleSchema = new mongoose.Schema({
 });
 
 // Crie o modelo e vincule à coleção 'sales'
-module.exports = mongoose.model("Sale", saleSchema, "sales");
+module.exports = mongoose.model("contacts", saleSchema, "contacts");
