@@ -5,9 +5,9 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Contacts API",
+      title: "Students API",
       version: "1.0.0",
-      description: "API for managing my contacts",
+      description: "API for managing my Students",
     },
     Servers: [
       {
