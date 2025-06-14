@@ -3,6 +3,8 @@ const router = express.Router();
 // const students = require("../models/students");
 const studentController = require("../controllers/students");
 
+const { isLoggedIn } = require("../middlewares/auth");
+
 /**
  * @swagger
  * tags:
@@ -29,7 +31,7 @@ const studentController = require("../controllers/students");
  *         description: student Id for search
  *     responses:
  *       '200':
- *         description: student List or a distinct student 
+ *         description: student List or a distinct student
  *       '404':
  *         description: student not found
  *       '500':
@@ -40,7 +42,7 @@ const studentController = require("../controllers/students");
  * @swagger
  * /students:
  *   post:
- *     summary: Add new student 
+ *     summary: Add new student
  *     tags: [students]
  *     requestBody:
  *       required: true
@@ -181,7 +183,6 @@ const studentController = require("../controllers/students");
  *         description: Internal server error
  */
 
-
 /**
  * @swagger
  * /students/{id}:
@@ -202,10 +203,9 @@ const studentController = require("../controllers/students");
  *         description: Record not found
  */
 
-
- router.get("/", studentController.getStudent); //get - read
- router.post("/", studentController.createStudent); //post - create
- router.put("/:id", studentController.updateStudent); //put - update
- router.delete("/:id", studentController.deleteStudent); //delete
+router.get("/", studentController.getStudent); //get - read
+router.post("/", isLoggedIn, studentController.createStudent); //post - create
+router.put("/:id", isLoggedIn, studentController.updateStudent); //put - update
+router.delete("/:id", isLoggedIn, studentController.deleteStudent); //delete
 
 module.exports = router;
