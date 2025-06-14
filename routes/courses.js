@@ -3,6 +3,8 @@ const router = express.Router();
 // const Courses = require("../models/Courses");
 const courseController = require("../controllers/courses");
 
+const { isLoggedIn } = require("../middlewares/auth");
+
 /**
  * @swagger
  * tags:
@@ -171,8 +173,8 @@ const courseController = require("../controllers/courses");
  */
 
 router.get("/", courseController.getCourses); //get - read
-router.post("/", courseController.createCourse); //post - create
-router.put("/:id", courseController.updateCourse); //put - update
-router.delete("/:id", courseController.deleteCourse); //delete
+router.post("/", isLoggedIn, courseController.createCourse); //post - create
+router.put("/:id", isLoggedIn, courseController.updateCourse); //put - update
+router.delete("/:id", isLoggedIn, courseController.deleteCourse); //delete
 
 module.exports = router;

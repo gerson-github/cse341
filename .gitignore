@@ -11,3 +11,5 @@ node_modules/
 
 # Ignore Yarn Plug'n'Play lock file
 pnpm-lock.yaml
+token.json
+credentials.json
