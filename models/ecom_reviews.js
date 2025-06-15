@@ -2,11 +2,10 @@ const mongoose = require("mongoose");
 
 // Defina o schema
 const ecomSchema = new mongoose.Schema({
-  userId: Number,
-  items: String,
-  totalPrice: Number,
-  status: String,
-  paymentInfo: String,
+  userId: String,
+  productId: String,
+  rating: Number,
+  comment: String,
   createdAt: Date,
   date: {
     type: Date,
@@ -15,4 +14,4 @@ const ecomSchema = new mongoose.Schema({
 });
 
 // Crie o modelo
-module.exports = mongoose.model("ecom_orders", ecomSchema, "ecom_orders");
+module.exports = mongoose.model("ecom_reviews", ecomSchema, "ecom_reviews");

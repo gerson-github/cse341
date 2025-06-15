@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// Defina o schema para a coleção "sales"
+// Defina o schema
 const ecomSchema = new mongoose.Schema({
   title: String,
   description: String,
@@ -8,9 +8,8 @@ const ecomSchema = new mongoose.Schema({
   stock: Number,
   image: String,
   category: String,
-  rating: Number 
+  rating: Number,
 });
 
-// Crie o modelo e vincule à coleção 'sales'
-module.exports = mongoose.model("courses", ecomSchema, "courses");
-
+// Crie o modelo
+module.exports = mongoose.model("ecom_products", ecomSchema, "ecom_products");
