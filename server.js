@@ -1,8 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const studentsRouter = require("./routes/students");
-const coursesRouter = require("./routes/courses");
+// const studentsRouter = require("./routes/students");
+// const coursesRouter = require("./routes/courses");
+
+const ordersRouter = require("./routes/ecom_orders");
+const productsRouter = require("./routes/ecom_products");
+const reviewsRouter = require("./routes/ecom_reviews");
+const usersRouter = require("./routes/ecom_users");
+
 const passport = require("passport");
 const session = require("express-session");
 const GitHubStrategy = require("passport-github2").Strategy;
@@ -114,8 +120,13 @@ app.get("/logout", (req, res, next) => {
 
 // Routes
 app.use("/", require("./routes/index.js"));
-app.use("/students", studentsRouter);
-app.use("/courses", coursesRouter); //app.use('/contacts', contactsRouter);
+//app.use("/students", studentsRouter); app.use("/courses", coursesRouter); //app.use('/contacts', contactsRouter);
+app.use("/orders", ordersRouter);
+app.use("/products", productsRouter);
+app.use("/reviews", reviewsRouter);
+app.use("/users", usersRouter);
+
+
 
 // app.get("/", (req, res) => {
 //   res.send("API is running...");
