@@ -126,8 +126,6 @@ app.use("/products", productsRouter);
 app.use("/reviews", reviewsRouter);
 app.use("/users", usersRouter);
 
-module.exports = app;
-
 // app.get("/", (req, res) => {
 //   res.send("API is running...");
 // });
@@ -138,3 +136,5 @@ if (require.main === module) {
     console.log(`Server is running on port ${PORT}`);
   });
 }
+
+module.exports = app;
