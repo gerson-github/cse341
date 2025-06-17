@@ -76,7 +76,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL:  process.env.CALL_BACK_URL, 
+      callbackURL: process.env.CALL_BACK_URL,
     },
     function (accessToken, refreshToken, profile, done) {
       return done(null, profile); // opcional: salvar no DB
@@ -126,13 +126,15 @@ app.use("/products", productsRouter);
 app.use("/reviews", reviewsRouter);
 app.use("/users", usersRouter);
 
-
+module.exports = app;
 
 // app.get("/", (req, res) => {
 //   res.send("API is running...");
 // });
 
 // Server running
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
