@@ -4,7 +4,8 @@
   "main": "server.js",
   "scripts": {
     "start-dev": "nodemon server.js",
-    "start-prod": "node server.js"
+    "start-prod": "node server.js",
+    "test": "mocha --timeout 5000"
   },
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.0",
@@ -22,7 +23,8 @@
   },
   "packageManager": "pnpm@10.6.1+sha512.40ee09af407fa9fbb5fbfb8e1cb40fbb74c0af0c3e10e9224d7b53c7658528615b2c92450e74cfad91e3a2dcafe3ce4050d80bda71d757756d2ce2b66213e9a3",
   "devDependencies": {
-    "chai": "^5.2.0",
+    "chai": "^4.5.0",
+    "chai-http": "^4.3.0",
     "mocha": "^11.6.0",
     "supertest": "^7.1.1",
     "swagger-autogen": "^2.23.7"
