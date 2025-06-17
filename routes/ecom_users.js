@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/ecom_users");
+const { validateUser } = require("../middlewares/userValidator");
 
 const { isLoggedIn } = require("../middlewares/auth");
 
@@ -155,8 +156,9 @@ const { isLoggedIn } = require("../middlewares/auth");
  */
 
 router.get("/", userController.getUsers); //get - read
-router.post("/", isLoggedIn, userController.createUser); //post - create
-router.put("/:id", isLoggedIn, userController.updateUser); //put - update
+
+router.post("/", isLoggedIn, validateUser, userController.createUser); //post - create
+router.put("/:id", isLoggedIn, validateUser, userController.updateUser); //put - update
 router.delete("/:id", isLoggedIn, userController.deleteUser); //delete
 
 module.exports = router;

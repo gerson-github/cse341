@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const { validateProduct } = require("../middlewares/productValidator");
 const productController = require("../controllers/ecom_products");
 
 const { isLoggedIn } = require("../middlewares/auth");
@@ -182,8 +182,13 @@ const { isLoggedIn } = require("../middlewares/auth");
  */
 
 router.get("/", productController.getProducts); //get - read
-router.post("/", isLoggedIn, productController.createProduct); //post - create
-router.put("/:id", isLoggedIn, productController.updateProduct); //put - update
+router.post("/", isLoggedIn, validateProduct, productController.createProduct); //post - create
+router.put(
+  "/:id",
+  isLoggedIn,
+  validateProduct,
+  productController.updateProduct
+); //put - update
 router.delete("/:id", isLoggedIn, productController.deleteProduct); //delete
 
 module.exports = router;
