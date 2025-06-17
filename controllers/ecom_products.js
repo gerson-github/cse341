@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const product = require("../models/ecom_products");
+const { validationResult } = require("express-validator");
 
 exports.getProducts = async (req, res) => {
   try {
@@ -20,6 +21,10 @@ exports.getProducts = async (req, res) => {
 
 //Post
 exports.createProduct = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty())
+    return res.status(400).json({ errors: errors.array() });
+
   try {
     const { title, description, price, stock, image, category, rating } =
       req.body;
@@ -41,6 +46,10 @@ exports.createProduct = async (req, res) => {
 
 //put
 exports.updateProduct = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty())
+    return res.status(400).json({ errors: errors.array() });
+
   try {
     const id = req.params.id; // Use req.params.id porque o ID vem da URL como parâmetro
 
